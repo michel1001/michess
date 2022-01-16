@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michess</title>
+    <link rel="stylesheet" href="lib/chessboard-0.3.0.min.css">
+    <link rel="stylesheet" href="/default.css" />
+    <link rel="icon" href="/static/ressources/springer_logo.png" type="image/x-icon">
+  </head>
+  <body class="body active" id="body">
+    <header class="header">
+      <div id="menu" class="toggle">
+        <ion-icon tabindex="4" name="menu-outline" class="open"></ion-icon>
+        <ion-icon tabindex="4" name="close-outline" class="close"></ion-icon>
+      </div>
+      
+      <div id="title">
+        <a href="/"title="Home" tabindex="-1"><img id="springer_logo" src="/static/ressources/springer_logo.png" alt=""></a>
+
+        <a href="/"title="Home" tabindex="-1"><h1>Michess</></a>
+      </div>
+      <div class="nav">
+        
+          
+            <div style="height: 64px;" class="profile">
+            <a href="/login"><ion-icon tabindex="4" name="person-outline" class="profile-pic" ></ion-icon></a>
+          
+        </div>
+        
+        <div class="switch active">
+          
+            <ion-icon tabindex="4" name="moon-outline" class="darkmode"></ion-icon>
+            <ion-icon tabindex="4" name="sunny-outline" class="whitemode"></ion-icon>
+        </div>
+      </div>
+    </header>
+    <div class="linkbar">
+      
+      <div class="Schachlinks stack">
+        <h3>Schach</h3>
+
+        <a class="linkbar-links" href="/michess/impressum.html">Schach lernen</a>
+        <a class="linkbar-links" href="/michess/impressum.html"
+          >Schach News</a
+        >
+        <a class="linkbar-links" href="/michess/impressum.html"
+          >Schach Turniere</a
+        >
+      </div>
+
+        <div class="social-media stack">
+          <h3>Social Media</h3>
+
+          <a class="linkbar-links" href="/michess/impressum.html">Instagram</a>
+          <a class="linkbar-links" href="/michess/impressum.html">YouTube</a>
+          <a class="linkbar-links" href="/michess/impressum.html">LinkedIn</a>
+        </div>
+        
+
+          <div class="About stack">
+            <h3>Über uns</h3>
+
+            <a class="linkbar-links" href="/michess/impressum.html">Über uns</a>
+            <a class="linkbar-links" href="/michess/impressum.html">Kontakt</a>
+            <a class="linkbar-links" href="/michess/impressum.html">©2021 Michess</a>
+          
+          </div>
+          
+          <div class="rights stack">
+            <h3>Rechtliches</h3>
+            <a class="linkbar-links" href="/michess/impressum.html">Impressum</a>
+            <a class="linkbar-links" href="/michess/impressum.html"
+              >Nutzungsbedingungen</a
+            >
+            <a class="linkbar-links" href="/michess/impressum.html"
+              >Datenschutzerklärung</a
+            >
+          </div>
+    </div> 
+
+    
+   <div class="main" id="main">
+      <a class="neon-button main-btn" tabindex="1" href="/login"> Jetzt spielen</a>
+      <div class="dropdown main-btn">
+      <span tabindex="2"  style="display: flex; align-items: center;" class="neon-button dropdown-btn dropdown-flex"><img class="dropdown-btn-img" style="width: 40px;" src="/static/ressources/turm.png">Schach <span></span></span>  
+      <div tabindex="-1" class="dropdown-content">
+        <a tabindex="3" id="dropdown-item1" class="dropdown-item dropdown-flex" href="#"><img id="dropdown-img1" class="dropdown-img" style="width: 20px;" src="/static/ressources/bauer3.png"> Neuigkeiten <span></span></a>
+        <a tabindex="3" id="dropdown-item3" class="dropdown-item dropdown-flex last-dropdown-item" href="#"><img id="dropdown-img3" class="dropdown-img" style="width: 20px; margin-right: 5px;" src="/static/ressources/chess_king.png" > Rangliste <span></span></a>
+        <a tabindex="3" id="dropdown-item2" class="dropdown-item dropdown-flex" href="#"><img id="dropdown-img2" class="dropdown-img" style="width: 20px;" src="/static/ressources/lauefer.png"> Turniere <span></span></a>
+      </div>
+
+    <div id='gameBoard'></div>   
+    <script src="lib/socket.io-1.2.0.js"></script> 
+    <script src="lib/chess.min.js"></script> 
+    <script src="lib/chessboard-0.3.0.min.js"></script> 
+    <script src="lib/jquery-1.11.1.js"></script> 
+    <script src="/default.js"></script>
+
+    </div>
+
+    </div>
+    
+     
+        
+        
+     
+    <footer></footer>
+    <script src='/index.js'>
+    </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

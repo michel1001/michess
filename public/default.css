@@ -1,0 +1,516 @@
+#gameBoard {
+    width: 400px;
+}
+
+:root {
+    /*This is the color code for the white mode due to no active which means whitemode activated => activated --> darkmode || actived*/
+    --clr-neon: hsl(180 100% 54%);
+    --themecolor: #111025;
+    --clr-bg: white;
+    --transition: height 0.5s;
+    --font-size: 30px;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman';
+    background: linear-gradient(var(--themecolor), hsl(32, 100%, 49%));
+  
+    color: white;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  body.active {
+    color: white;
+    --themecolor: #111025;
+    --clr-neon: hsl(180 100% 54%);
+    --clr-bg: rgb(255, 255, 255);
+    background: linear-gradient(var(--themecolor), hsl(0, 0%, 10%));
+  
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .main {
+    color: var(--themecolor);
+    display: flex;
+    background: linear-gradient(var(--themecolor), hsl(32, 100%, 49%));
+  
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    /*z-index: -2;*/
+    /*transition: height 0.7;*/
+    justify-content: center;
+    height: 89vh;
+  }
+  
+  body.active .main {
+    color: white;
+    position: relative;
+    display: flex;
+    background: linear-gradient(var(--themecolor), hsl(0, 0%, 10%));
+  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 89vh;
+    transition: var(--transition);
+  }
+  body.out .main {
+    height: calc(89vh - 150px);
+    transition: var(--transition);
+  }
+  
+  body a {
+    text-decoration: none;
+    color: var(--clr-neon);
+  }
+  
+  .main h1 {
+    margin: 0;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--themecolor);
+    align-items: center;
+    height: 10vh;
+    padding-top: 1vh;
+  }
+  
+  #springer_logo {
+    height: 64px;
+    display: inline;
+  }
+  
+  #title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    cursor: pointer;
+  }
+  #title a {
+    color: white;
+  }
+  
+  #title h1 {
+    font-size: 3.4em;
+    display: inline;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .toggle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .toggle ion-icon.close {
+    color: red;
+  }
+  .toggle ion-icon.open,
+  .toggle.active ion-icon.close {
+    display: block;
+  }
+  .toggle ion-icon.close,
+  .toggle.active ion-icon.open {
+    display: none;
+  }
+  
+  ion-icon {
+    font-size: 48px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .linkbar {
+    height: 0;
+    transition: var(--transition);
+    background-color: var(--themecolor);
+  
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    visibility: visible;
+  }
+  
+  .linkbar.active {
+    height: 150px;
+    visibility: visible;
+    transition: var(--transition);
+  }
+  
+  .stack {
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+  }
+  
+  .linkbar a,
+  .linkbar h3 {
+    visibility: hidden;
+  }
+  
+  .linkbar.active a,
+  .linkbar.active h3,
+  .linkbar.active .stack {
+    visibility: visible;
+  }
+  
+  .switch ion-icon.darkmode,
+  .switch.active ion-icon.whitemode {
+    display: block;
+  }
+  .switch ion-icon.whitemode,
+  .switch.active ion-icon.darkmode {
+    display: none;
+  }
+  .switch .whitemode {
+    color: rgb(255, 251, 0);
+  }
+  .switch .darkmode {
+    color: rgb(176, 0, 252);
+  }
+  
+  .profile {
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+  }
+  
+  /*.profile ion-button {
+    height: 40px !important;
+  }*/
+  
+  /* !!LOGIN!! */
+  .login {
+    width: 100%;
+    height: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    place-content: center;
+    visibility: hidden;
+    position: absolute;
+    top: 11vh;
+    background: linear-gradient(var(--themecolor), hsl(0, 0%, 10%));
+    padding: 0 !important;
+    left: 0;
+    font-size: 30px;
+    /*transition: height 1s;*/
+  }
+  .login.active {
+    height: 89vh;
+    visibility: visible;
+  }
+  .login input {
+    margin-bottom: 3px;
+    width: 40%;
+    background-color: white;
+    border: none;
+    font-size: 30px;
+    text-align: center;
+    padding: 0px;
+  }
+  .login input:focus,
+  .submit:hover {
+    background-color: var(--clr-neon);
+  }
+  .login-links {
+    color: rgb(189, 189, 189);
+  }
+  .login-links:hover {
+    transform: scale(1.2);
+    text-decoration: underline solid grey 1px !important;
+  }
+  .login-title {
+    margin-bottom: 10px;
+  }
+  .login-items,
+  .login-title {
+    visibility: hidden;
+  }
+  .login-items.active,
+  .login-title.active {
+    visibility: visible;
+  }
+  
+  /* !!REGISTER!! */
+  .register {
+    background: linear-gradient(var(--themecolor), hsl(0, 0%, 10%));
+    width: 100%;
+    height: 0;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    visibility: hidden;
+    text-align: center;
+    font-size: 30px;
+    left: 0;
+    /*transition: height 1s;*/
+    padding: 0 !important;
+  }
+  .register.active {
+    height: 89vh;
+    visibility: visible;
+  }
+  .register input {
+    font-size: 30px;
+    margin-bottom: 3px;
+    width: 40%;
+    background-color: white;
+    border: none;
+    text-align: center;
+    padding: 0 !important;
+  }
+  .register input:focus,
+  .submit:hover {
+    background-color: var(--clr-neon);
+  }
+  .register-items,
+  .register-title {
+    visibility: hidden;
+  }
+  .register-items.active,
+  .register-title.active {
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .radio1 {
+    width: 30px !important;
+    height: 30px;
+  }
+  .radio-stack {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  
+  .radio {
+    text-align: left;
+  }
+  .submit {
+    font-size: 1em !important;
+    padding: 0.1em !important;
+    border-radius: 0 !important;
+    text-shadow: 1px 1px black !important;
+  }
+  .register-links {
+    color: rgb(189, 189, 189);
+  }
+  .register-links:hover {
+    transform: scale(1.2);
+    text-decoration: underline solid grey 1px !important;
+  }
+  .register-title {
+    margin-bottom: 10px;
+  }
+  
+  /*!! NEON BUTTON!!*/
+  .neon-button {
+    font-size: 3rem;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+  
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.5), 0 0 0.5em var(--clr-neon);
+  
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+  
+    position: relative;
+  }
+  
+  .neon-button::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background: var(--clr-neon) !important;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1.5em);
+    opacity: 0.7;
+  }
+  
+  .neon-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0;
+    background: var(--clr-neon) !important;
+    transition: opacity 100ms linear;
+    z-index: -1;
+  }
+  
+  .neon-button:hover,
+  .neon-button:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+    z-index: 2 !important;
+  }
+  
+  .neon-button:hover::before,
+  .neon-button:focus::before,
+  .neon-button:hover::after,
+  .neon-button:focus::after {
+    opacity: 1;
+  }
+  
+  .dropdown {
+    width: 22.5rem;
+    text-align: center;
+  }
+  
+  .dropdown-btn::after,
+  .dropdown-btn::before {
+    box-shadow: none !important;
+  }
+  
+  .dropdown-btn:hover,
+  .dropdown-btn.hovered {
+    border-radius: 0.25em 0.25em 0 0;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    visibility: visible;
+    position: absolute;
+    max-height: 0;
+    background-color: var(--clr-neon);
+    width: 22.5rem;
+    border-radius: 0 0 0.25em 0.25em;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    color: black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    transition: max-height 0.3s;
+  }
+  
+  .dropdown-content.active {
+    visibility: visible;
+    max-height: 100px;
+    padding: 12px 0;
+  
+    transition: max-height 0.3s;
+  }
+  
+  .dropdown-img {
+    visibility: hidden;
+    filter: brightness(0%);
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 10px 0;
+    text-decoration: none;
+    visibility: hidden;
+  }
+  
+  .dropdown-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dropdown-content.active a {
+    visibility: visible;
+  }
+  
+  .dropdown-content.out {
+    visibility: visible;
+    max-height: 50px;
+    padding: 12px 0;
+    transition: max-height 0.3s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .dropdown-content.out a {
+    visibility: visible;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover,
+  .dropdown-content a:focus {
+    background-color: #f1f1f1;
+  }
+  
+  @media screen and (max-width: 900px) {
+    :root {
+      --transition: none;
+    }
+  
+    body {
+      width: 100%;
+      height: 100%;
+    }
+  
+    #title h1 {
+      font-size: 2rem;
+    }
+  
+    #springer_logo {
+      height: 32px;
+    }
+  
+    ion-icon {
+      font-size: 32px;
+    }
+  
+    .neon-button {
+      font-size: 2rem;
+    }
+  
+    .dropdown {
+      width: 11rem;
+    }
+  
+    .dropdown-content {
+      width: 11rem;
+    }
+  
+    .linkbar.active {
+      height: 89%;
+      flex-direction: column;
+    }
+  }
+  
